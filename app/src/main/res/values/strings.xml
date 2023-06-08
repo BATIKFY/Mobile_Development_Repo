@@ -52,6 +52,7 @@
     <string name="error_login">Failed to Login</string>
     <string name="error_register">Failed to Register</string>
     <string name="success_register">Registration is Successful</string>
+    <string name="double_back_press">DOUBLE PRESS TO QUIT GAME</string>
 
     <!-- Puzzle - First button text -->
     <string name="randomizing">Shuffling</string>
@@ -204,5 +205,14 @@
         <item>d. Kekuatan spiritual</item>
         <item>a. Melukis dengan tangan</item>
     </string-array>
+
+    <!-- Quiz -->
+    <string name="questions">QUESTIONS</string>
+    <string name="default_quiz_number">1/5</string>
+    <string name="default_quiz_timer">00:15</string>
+    <string name="option1">Option1</string>
+    <string name="option2">Option2</string>
+    <string name="option3">Option3</string>
+    <string name="option4">Option4</string>
 
 </resources>
