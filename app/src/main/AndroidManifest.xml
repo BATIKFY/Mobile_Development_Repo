@@ -31,9 +31,11 @@
             android:exported="false" />
         <activity
             android:name=".ui.game.quiz.QuizActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.game.puzzle.PuzzleActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.favorite.FavoriteActivity"
