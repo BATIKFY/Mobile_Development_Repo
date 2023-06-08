@@ -112,11 +112,11 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun gameResult() {
-//        val intent = Intent(this, ResultActivity::class.java)
-//        intent.putExtra("correct", correctAnswerCount.toString())
-//        intent.putExtra("total", questionsList.size.toString())
-//        startActivity(intent)
-//        finish()
+        val intent = Intent(this, QuizResultActivity::class.java)
+        intent.putExtra("correct", correctAnswerCount.toString())
+        intent.putExtra("total", questionsList.size.toString())
+        startActivity(intent)
+        finish()
     }
 
     private fun correctAns(option: Button) {

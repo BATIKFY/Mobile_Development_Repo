@@ -7,7 +7,6 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -42,12 +41,15 @@
             android:exported="false" />
         <activity
             android:name=".ui.game.quiz.QuizActivity"
-            android:screenOrientation="portrait"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.game.quiz.QuizResultActivity"
             android:exported="false" />
         <activity
             android:name=".ui.game.puzzle.PuzzleActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.favorite.FavoriteActivity"
             android:exported="false"

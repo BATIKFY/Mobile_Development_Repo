@@ -16,6 +16,8 @@ import android.view.ViewConfiguration
 import android.view.ViewTreeObserver
 import android.widget.AdapterView
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -34,6 +36,8 @@ import java.util.concurrent.TimeUnit
 class PuzzleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPuzzleBinding
     private lateinit var sp: SharedPreferences
+    private var backPressedTime: Long = 0
+    private var backToast: Toast? = null
 
     /***************
      * Dimensions *
@@ -102,6 +106,10 @@ class PuzzleActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        // Back to home view
+        onBack()
+
+        // Init
         initComponents()
         initSharedPreferences()
         initHandlers()
@@ -963,6 +971,25 @@ class PuzzleActivity : AppCompatActivity() {
 
     private fun permissionsResult(grantResults: IntArray) {
         UploadUtil.permissionsResultGallery(grantResults, this@PuzzleActivity, galleryLauncher)
+    }
+
+    private fun onBack() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                    backToast?.cancel()
+                    finish()
+                } else {
+                    backToast = Toast.makeText(
+                        baseContext,
+                        getString(R.string.double_back_press),
+                        Toast.LENGTH_SHORT
+                    )
+                    backToast?.show()
+                }
+                backPressedTime = System.currentTimeMillis()
+            }
+        })
     }
 
     companion object {
