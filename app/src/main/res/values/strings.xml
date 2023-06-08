@@ -214,5 +214,10 @@
     <string name="option2">Option2</string>
     <string name="option3">Option3</string>
     <string name="option4">Option4</string>
+    <string name="greeting1">You\'re awesome!</string>
+    <string name="greeting2">You\'re cool!</string>
+    <string name="greeting3">You\'re a genius!</string>
+    <string name="retry">Retry</string>
+    <string name="main_menu">Main Menu</string>
 
 </resources>

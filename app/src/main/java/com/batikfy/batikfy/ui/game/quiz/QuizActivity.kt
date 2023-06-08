@@ -100,7 +100,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 if (index < questionsList.size) {
                     Toast.makeText(this@QuizActivity, "next", Toast.LENGTH_SHORT).show()
                     questionModel = questionsList[index]
-                    binding.countQuiz.text = index.toString() + "/" +questionsList.size.toString()
+                    binding.countQuiz.text = (index + 1).toString() + "/" +questionsList.size.toString()
                     setAllQuestions()
                     resetBackground()
                     enableButton()
@@ -116,8 +116,8 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun gameResult() {
         val intent = Intent(this, QuizResultActivity::class.java)
-        intent.putExtra("correct", correctAnswerCount.toString())
-        intent.putExtra("total", questionsList.size.toString())
+        val score = correctAnswerCount.toFloat() /questionsList.size.toFloat()
+        intent.putExtra(QuizResultActivity.EXTRA_SCORE, score)
         startActivity(intent)
         finish()
     }
