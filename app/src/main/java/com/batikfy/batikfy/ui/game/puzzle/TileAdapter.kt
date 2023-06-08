@@ -11,7 +11,7 @@ class TileAdapter(
     private val tileWidth: Int,
     private val tileHeight: Int
 ) : BaseAdapter() {
-    
+
     override fun getCount(): Int {
         return tileImages.size
     }
