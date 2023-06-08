@@ -98,4 +98,111 @@
 
     <!-- Puzzle - Image upload -->
     <string name="no_permission">Insufficient permission to access Gallery</string>
+
+    <!-- Quiz - Question -->
+    <string-array name="question">
+        <item>Apa makna dari motif Batik Parang?</item>
+        <item>Di mana Batik Pekalongan berasal?</item>
+        <item>Apa yang melambangkan motif Batik Sekar Jagad?</item>
+        <item>Apa arti dari motif Batik Sidoluhur?</item>
+        <item>Bagaimana proses pembuatan Batik Jumputan?</item>
+        <item>Siapa yang memperkenalkan Batik Bali?</item>
+        <item>Apa yang membuat Batik Betawi terkenal?</item>
+        <item>Apa yang menjadi inspirasi untuk motif Batik Cendrawasih?</item>
+        <item>Apa yang melambangkan motif Batik Kawung?</item>
+        <item>Apa pengaruh dari budaya Tiongkok dalam motif Batik Megamendung?</item>
+        <item>Apa arti dari motif Batik Parang?</item>
+        <item>Di mana Batik Pekalongan berasal?</item>
+        <item>Apa yang melambangkan motif Batik Sekar Jagad?</item>
+        <item>Apa arti dari motif Batik Sidoluhur?</item>
+        <item>Bagaimana proses pembuatan Batik Jumputan?</item>
+    </string-array>
+
+    <!-- Quiz - Option -->
+    <string-array name="opt_1">
+        <item>a. Kesenian tradisional</item>
+        <item>a. Solo</item>
+        <item>a. Pohon aren</item>
+        <item>a. Kehidupan yang mulia</item>
+        <item>a. Melukis dengan tangan</item>
+        <item>a. Pande Ketut Krisna</item>
+        <item>a. Motif fauna</item>
+        <item>a. Burung cendrawasih</item>
+        <item>a. Kebersamaan</item>
+        <item>a. Kesenian Tiongkok</item>
+        <item>a. Kesenian tradisional</item>
+        <item>a. Solo</item>
+        <item>a. Pohon aren</item>
+        <item>a. Kehidupan yang mulia</item>
+        <item>a. Melukis dengan tangan</item>
+    </string-array>
+    <string-array name="opt_2">
+        <item>b. Keberanian dan kegigihan</item>
+        <item>b. Yogyakarta</item>
+        <item>b. Tumbuhan dan hewan</item>
+        <item>b. Keluhuran hidup</item>
+        <item>b. Mencelupkan kain ke pewarna</item>
+        <item>b. Pangeran Diponegoro</item>
+        <item>b. Motif flora</item>
+        <item>b. Bunga Papua</item>
+        <item>b. Kemakmuran</item>
+        <item>b. Budaya Betawi</item>
+        <item>b. Keberanian dan kegigihan</item>
+        <item>b. Yogyakarta</item>
+        <item>b. Tumbuhan dan hewan</item>
+        <item>b. Keluhuran hidup</item>
+        <item>b. Mencelupkan kain ke pewarna</item>
+    </string-array>
+    <string-array name="opt_3">
+        <item>c. Keseimbangan dan kedamaian</item>
+        <item>c. Pekalongan</item>
+        <item>c. Keindahan alam</item>
+        <item>c. Kerajaan Mataram</item>
+        <item>c. Mengikat kain menjadi motif</item>
+        <item>c. Raden Ajeng Kartini</item>
+        <item>c. Motif ikon Jakarta</item>
+        <item>c. Tumbuhan khas Papua</item>
+        <item>c. Keberuntungan</item>
+        <item>c. Kepercayaan Jawa</item>
+        <item>c. Keseimbangan dan kedamaian</item>
+        <item>c. Pekalongan</item>
+        <item>c. Keindahan alam</item>
+        <item>c. Kerajaan Mataram</item>
+        <item>c. Mengikat kain menjadi motif</item>
+    </string-array>
+    <string-array name="opt_4">
+        <item>d. Simbol kekuatan dan keberanian</item>
+        <item>d. Surakarta</item>
+        <item>d. Keanekaragaman budaya</item>
+        <item>d. Kekuatan spiritual</item>
+        <item>d. Mencuci dan mengeringkan kain</item>
+        <item>d. Nyoman Gunarsa</item>
+        <item>d. Motif ikon Betawi</item>
+        <item>d. Bunga Cendrawasih</item>
+        <item>d. Keabadian</item>
+        <item>d. Pengaruh India</item>
+        <item>d. Simbol kekuatan dan keberanian</item>
+        <item>d. Surakarta</item>
+        <item>d. Keanekaragaman budaya</item>
+        <item>d. Kekuatan spiritual</item>
+        <item>d. Mencuci dan mengeringkan kain</item>
+    </string-array>
+    <string-array name="opt_true">
+        <item>b. Keberanian dan kegigihan</item>
+        <item>c. Pekalongan</item>
+        <item>a. Pohon aren</item>
+        <item>d. Kekuatan spiritual</item>
+        <item>a. Melukis dengan tangan</item>
+        <item>a. Pande Ketut Krisna</item>
+        <item>b. Motif flora</item>
+        <item>a. Burung cendrawasih</item>
+        <item>c. Keberuntungan</item>
+        <item>e. Pengaruh Tiongkok</item>
+        <item>b. Keberanian dan kegigihan</item>
+        <item>c. Pekalongan</item>
+        <item>a. Pohon aren</item>
+        <item>d. Kekuatan spiritual</item>
+        <item>a. Melukis dengan tangan</item>
+    </string-array>
+
 </resources>
