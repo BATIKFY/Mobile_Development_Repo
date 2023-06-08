@@ -1,5 +1,6 @@
 package com.batikfy.batikfy.ui.game.quiz
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -93,11 +94,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 binding.countDown.text = sDuration
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onFinish() {
                 index++
                 if (index < questionsList.size) {
                     Toast.makeText(this@QuizActivity, "next", Toast.LENGTH_SHORT).show()
                     questionModel = questionsList[index]
+                    binding.countQuiz.text = index.toString() + "/" +questionsList.size.toString()
                     setAllQuestions()
                     resetBackground()
                     enableButton()
