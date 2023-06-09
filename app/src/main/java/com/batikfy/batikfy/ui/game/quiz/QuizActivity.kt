@@ -186,6 +186,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             override fun handleOnBackPressed() {
                 if (backPressedTime + 2000 > System.currentTimeMillis()) {
                     backToast?.cancel()
+                    countDownTimer?.cancel()
                     finish()
                 } else {
                     backToast = Toast.makeText(
