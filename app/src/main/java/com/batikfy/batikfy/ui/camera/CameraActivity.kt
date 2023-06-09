@@ -1,10 +1,13 @@
 package com.batikfy.batikfy.ui.camera
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent.ACTION_GET_CONTENT
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -16,12 +19,14 @@ import com.batikfy.batikfy.R
 import com.batikfy.batikfy.databinding.ActivityCameraBinding
 import com.batikfy.batikfy.ui.result.ResultActivity
 import com.batikfy.batikfy.utils.createFile
-import java.nio.file.Files.createFile
+import com.batikfy.batikfy.utils.uriToFile
+import java.io.File
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
+    private var getFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +44,48 @@ class CameraActivity : AppCompatActivity() {
 
             startCamera()
         }
+        binding.gallery.setOnClickListener { startGallery() }
     }
 
     public override fun onResume() {
         super.onResume()
         startCamera()
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri? = result.data?.data
+
+            selectedImg?.let { uri ->
+                val myFile = uriToFile(uri, this@CameraActivity)
+                getFile = myFile
+
+                val intent = Intent(this@CameraActivity, ResultActivity::class.java)
+                intent.putExtra("picture", myFile)
+                intent.putExtra(
+                    "isBackCamera",
+                    cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
+                )
+                startActivity(intent)
+                finish()
+            } ?: run {
+                Toast.makeText(
+                    this@CameraActivity,
+                    getString(R.string.failed_select_picture),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun takePhoto() {
