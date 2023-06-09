@@ -15,7 +15,7 @@
     <string name="failed_take_pict">Failed to take a picture</string>
     <string name="success_take_pict">Success to take a picture</string>
     <string name="gallery">Gallery</string>
-    <string name="preview_image">preview image for your story</string>
+    <string name="preview_image">preview of your image</string>
     <string name="search_menu">Search menu</string>
     <string name="bookmark_menu">Bookmark menu</string>
     <string name="search_hint">Search by name</string>
@@ -57,6 +57,9 @@
     <string name="error_register">Failed to Register</string>
     <string name="success_register">Registration is Successful</string>
     <string name="double_back_press">DOUBLE PRESS TO QUIT GAME</string>
+    <string name="analysis_result">Analysis Result</string>
+    <string name="batik_name_not_found">Batik Name Not Found</string>
+    <string name="batik_desc_not_found">Batik Description Not Found</string>
 
     <!-- Puzzle - First button text -->
     <string name="randomizing">Shuffling</string>
