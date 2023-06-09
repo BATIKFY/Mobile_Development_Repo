@@ -102,111 +102,112 @@
 
     <!-- Quiz - Question -->
     <string-array name="question">
-        <item>Apa makna dari motif Batik Parang?</item>
-        <item>Di mana Batik Pekalongan berasal?</item>
-        <item>Apa yang melambangkan motif Batik Sekar Jagad?</item>
-        <item>Apa arti dari motif Batik Sidoluhur?</item>
-        <item>Bagaimana proses pembuatan Batik Jumputan?</item>
-        <item>Siapa yang memperkenalkan Batik Bali?</item>
-        <item>Apa yang membuat Batik Betawi terkenal?</item>
-        <item>Apa yang menjadi inspirasi untuk motif Batik Cendrawasih?</item>
-        <item>Apa yang melambangkan motif Batik Kawung?</item>
-        <item>Apa pengaruh dari budaya Tiongkok dalam motif Batik Megamendung?</item>
-        <item>Apa arti dari motif Batik Parang?</item>
-        <item>Di mana Batik Pekalongan berasal?</item>
-        <item>Apa yang melambangkan motif Batik Sekar Jagad?</item>
-        <item>Apa arti dari motif Batik Sidoluhur?</item>
-        <item>Bagaimana proses pembuatan Batik Jumputan?</item>
+        <item>Apa motif batik yang memiliki makna petuah untuk tidak pernah menyerah?</item>
+        <item>Motif batik yang menggabungkan gambar burung cendrawasih dengan tumbuhan dan bunga khas Papua adalah?</item>
+        <item>Batik tradisional dari Jakarta yang diakui oleh UNESCO sebagai warisan dunia adalah?</item>
+        <item>Dari manakah asal batik Pekalongan?</item>
+        <item>Apa yang dilambangkan oleh motif batik Kawung?</item>
+        <item>Batik Truntum merupakan motif batik yang berasal dari daerah?</item>
+        <item>Apa yang dilambangkan oleh batik Sekar Jagad?</item>
+        <item>Batik Pekalongan mendapat pengaruh dari budaya asing berikut, kecuali:</item>
+        <item>Batik Cendrawasih merupakan motif batik khas dari wilayah mana?</item>
+        <item>Motif Batik Megamendung berkembang dengan variasi corak yang unik di kawasan mana?</item>
+        <item>Apa yang menjadi ciri khas Batik Betawi?</item>
+        <item>Batik Sekar Jagad mengandung makna apa?</item>
+        <item>Apa yang menginspirasi motif Buketan dari Batik Bali?</item>
+        <item>Apa yang menjadi makna Batik Parang?</item>
+        <item>Apa peralatan utama yang digunakan dalam proses membatik tradisional?</item>
     </string-array>
 
     <!-- Quiz - Option -->
     <string-array name="opt_1">
-        <item>a. Kesenian tradisional</item>
-        <item>a. Solo</item>
-        <item>a. Pohon aren</item>
-        <item>a. Kehidupan yang mulia</item>
-        <item>a. Melukis dengan tangan</item>
-        <item>a. Pande Ketut Krisna</item>
-        <item>a. Motif fauna</item>
-        <item>a. Burung cendrawasih</item>
-        <item>a. Kebersamaan</item>
-        <item>a. Kesenian Tiongkok</item>
-        <item>a. Kesenian tradisional</item>
-        <item>a. Solo</item>
-        <item>a. Pohon aren</item>
-        <item>a. Kehidupan yang mulia</item>
-        <item>a. Melukis dengan tangan</item>
+        <item>a. Batik Parang</item>
+        <item>a. Batik Parang</item>
+        <item>a. Batik Betawi</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Hubungan masyarakat yang saling gotong-royong</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Keindahan alam Papua</item>
+        <item>a. Belanda</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Pekalongan</item>
+        <item>a. Motif burung cendrawasih</item>
+        <item>a. Keanggunan dan keterbukaan</item>
+        <item>a. Terinspirasi oleh burung cendrawasih</item>
+        <item>a. Melambangkan keragaman di seluruh dunia</item>
+        <item>a. Kuas dan cat</item>
     </string-array>
     <string-array name="opt_2">
-        <item>b. Keberanian dan kegigihan</item>
+        <item>b. Batik Pekalongan</item>
+        <item>b. Batik Cendrawasih</item>
+        <item>b. Batik Pekalongan</item>
+        <item>b. Jakarta</item>
+        <item>b. Buah kolang-kaling dari pohon aren</item>
+        <item>b. Surakarta</item>
+        <item>b. Hubungan masyarakat yang saling gotong-royong dan hidup damai</item>
+        <item>b. Arab</item>
+        <item>b. Bali</item>
         <item>b. Yogyakarta</item>
-        <item>b. Tumbuhan dan hewan</item>
-        <item>b. Keluhuran hidup</item>
-        <item>b. Mencelupkan kain ke pewarna</item>
-        <item>b. Pangeran Diponegoro</item>
-        <item>b. Motif flora</item>
-        <item>b. Bunga Papua</item>
-        <item>b. Kemakmuran</item>
-        <item>b. Budaya Betawi</item>
-        <item>b. Keberanian dan kegigihan</item>
-        <item>b. Yogyakarta</item>
-        <item>b. Tumbuhan dan hewan</item>
-        <item>b. Keluhuran hidup</item>
-        <item>b. Mencelupkan kain ke pewarna</item>
+        <item>b. Motif topeng dan sepeda ontel</item>
+        <item>b. Keteduhan dan ketenangan</item>
+        <item>b. Terinspirasi oleh ukiran dinding candi di pulau Jawa</item>
+        <item>b. Menggambarkan kesinambungan dan ketekunan</item>
+        <item>b. Mesin jahit dan benang</item>
     </string-array>
     <string-array name="opt_3">
-        <item>c. Keseimbangan dan kedamaian</item>
+        <item>c. Batik Sekar Jagad</item>
+        <item>c. Batik Kawung</item>
+        <item>c. Batik Bali</item>
         <item>c. Pekalongan</item>
-        <item>c. Keindahan alam</item>
-        <item>c. Kerajaan Mataram</item>
-        <item>c. Mengikat kain menjadi motif</item>
-        <item>c. Raden Ajeng Kartini</item>
-        <item>c. Motif ikon Jakarta</item>
-        <item>c. Tumbuhan khas Papua</item>
-        <item>c. Keberuntungan</item>
-        <item>c. Kepercayaan Jawa</item>
-        <item>c. Keseimbangan dan kedamaian</item>
+        <item>c. Kerjasama antar keluarga</item>
         <item>c. Pekalongan</item>
-        <item>c. Keindahan alam</item>
-        <item>c. Kerajaan Mataram</item>
-        <item>c. Mengikat kain menjadi motif</item>
+        <item>c. Keragaman di seluruh dunia</item>
+        <item>c. Tiongkok</item>
+        <item>c. Papua</item>
+        <item>c. Cirebon</item>
+        <item>c. Motif buah kolang-kaling</item>
+        <item>c. Kesinambungan dan keteguhan</item>
+        <item>c. Terinspirasi oleh ikatan bunga</item>
+        <item>c. Mencerminkan hubungan masyarakat yang saling gotong-royong</item>
+        <item>c. Canting dan malam</item>
     </string-array>
     <string-array name="opt_4">
-        <item>d. Simbol kekuatan dan keberanian</item>
+        <item>d. Batik Sidoluhur</item>
+        <item>d. Batik Megamendung</item>
+        <item>d. Batik Jumputan</item>
+        <item>d. Bali</item>
+        <item>d. Hasil pembagian kerajaan Mataram</item>
+        <item>d. Bali</item>
+        <item>d. Kesinambungan dan ketekunan</item>
+        <item>d. India</item>
+        <item>d. Cirebon</item>
         <item>d. Surakarta</item>
-        <item>d. Keanekaragaman budaya</item>
-        <item>d. Kekuatan spiritual</item>
-        <item>d. Mencuci dan mengeringkan kain</item>
-        <item>d. Nyoman Gunarsa</item>
-        <item>d. Motif ikon Betawi</item>
-        <item>d. Bunga Cendrawasih</item>
-        <item>d. Keabadian</item>
-        <item>d. Pengaruh India</item>
-        <item>d. Simbol kekuatan dan keberanian</item>
-        <item>d. Surakarta</item>
-        <item>d. Keanekaragaman budaya</item>
-        <item>d. Kekuatan spiritual</item>
-        <item>d. Mencuci dan mengeringkan kain</item>
+        <item>d. Motif ikatan bunga</item>
+        <item>d. Keragaman dan keindahan</item>
+        <item>d. Terinspirasi oleh ikon-ikon Jakarta</item>
+        <item>d. Menampilkan motif bulat-bulat kecil</item>
+        <item>d. Pisau dan ukiran</item>
     </string-array>
     <string-array name="opt_true">
-        <item>b. Keberanian dan kegigihan</item>
+        <item>a. Batik Parang</item>
+        <item>b. Batik Cendrawasih</item>
+        <item>a. Batik Betawi</item>
         <item>c. Pekalongan</item>
-        <item>a. Pohon aren</item>
-        <item>d. Kekuatan spiritual</item>
-        <item>a. Melukis dengan tangan</item>
-        <item>a. Pande Ketut Krisna</item>
-        <item>b. Motif flora</item>
-        <item>a. Burung cendrawasih</item>
-        <item>c. Keberuntungan</item>
-        <item>a. Kesenian Tiongkok</item>
-        <item>b. Keberanian dan kegigihan</item>
-        <item>c. Pekalongan</item>
-        <item>a. Pohon aren</item>
-        <item>d. Kekuatan spiritual</item>
-        <item>a. Melukis dengan tangan</item>
+        <item>a. Hubungan masyarakat yang saling gotong-royong</item>
+        <item>b. Surakarta</item>
+        <item>c. Keragaman di seluruh dunia</item>
+        <item>d. India</item>
+        <item>c. Papua</item>
+        <item>c. Cirebon</item>
+        <item>b. Motif topeng dan sepeda ontel</item>
+        <item>d. Keragaman dan keindahan</item>
+        <item>c. Terinspirasi oleh ikatan bunga</item>
+        <item>b. Menggambarkan kesinambungan dan ketekunan</item>
+        <item>c. Canting dan malam</item>
     </string-array>
 
     <!-- Quiz -->
+    <string name="quiz">Quiz</string>
     <string name="questions">QUESTIONS</string>
     <string name="default_quiz_number">1/5</string>
     <string name="default_quiz_timer">00:15</string>

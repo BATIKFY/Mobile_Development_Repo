@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/questions"
+                    android:text="@string/quiz"
                     android:textSize="45sp"
                     android:textStyle="bold" />
 
@@ -76,7 +76,11 @@
                     android:enabled="true"
                     android:text="@string/option1"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp" />
 
                 <android.widget.Button
                     android:id="@+id/option2"
@@ -90,7 +94,11 @@
                     android:enabled="true"
                     android:text="@string/option2"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp" />
 
                 <android.widget.Button
                     android:id="@+id/option3"
@@ -104,7 +112,11 @@
                     android:enabled="true"
                     android:text="@string/option3"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp" />
 
                 <android.widget.Button
                     android:id="@+id/option4"
@@ -119,7 +131,11 @@
                     android:enabled="true"
                     android:text="@string/option4"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
