@@ -40,9 +40,13 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="signup">Sign Up</string>
+    <string name="update">Update</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="renew_password">Confirm New Password</string>
     <string name="not_have_account">Don\'t have an account yet?</string>
     <string name="have_account">Already have an account?</string>
     <string name="error_name">Name is required</string>
