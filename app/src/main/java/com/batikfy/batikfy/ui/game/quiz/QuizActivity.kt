@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -23,6 +25,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private var maxQuiz: Int = 5
     lateinit var questionModel: QuestionModel
 
+    private var countDownTimer: CountDownTimer? = null
     private var backPressedTime: Long = 0
     private var backToast: Toast? = null
     private val delayDuration: Long = 1500
@@ -81,7 +84,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     fun countdown() {
         val duration: Long = TimeUnit.SECONDS.toMillis(15)
 
-        object : CountDownTimer(duration, 1000) {
+        countDownTimer = object : CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val sDuration: String = String.format(
                     Locale.ENGLISH,
@@ -94,24 +97,32 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                 binding.countDown.text = sDuration
             }
 
-            @SuppressLint("SetTextI18n")
             override fun onFinish() {
-                index++
-                if (index < questionsList.size) {
-                    Toast.makeText(this@QuizActivity, "next", Toast.LENGTH_SHORT).show()
-                    questionModel = questionsList[index]
-                    binding.countQuiz.text = (index + 1).toString() + "/" +questionsList.size.toString()
-                    setAllQuestions()
-                    resetBackground()
-                    enableButton()
-                    countdown()
-
-                } else {
-                    Toast.makeText(this@QuizActivity, "finish", Toast.LENGTH_SHORT).show()
-                    gameResult()
-                }
+                nextQuestion()
             }
         }.start()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun nextQuestion(){
+        index++
+        if (index < questionsList.size) {
+            questionModel = questionsList[index]
+            binding.countQuiz.text = (index + 1).toString() + "/" +questionsList.size.toString()
+            setAllQuestions()
+            resetBackground()
+            enableButton()
+            restartCountdown()
+
+        } else {
+            countDownTimer?.cancel()
+            gameResult()
+        }
+    }
+
+    private fun restartCountdown() {
+        countDownTimer?.cancel()
+        countdown()
     }
 
     private fun gameResult() {
@@ -155,6 +166,12 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             wrongAns(option)
         }
+
+        // Next question or go to result
+        countDownTimer?.cancel()
+        Handler(Looper.getMainLooper()).postDelayed({
+            nextQuestion()
+        }, delayDuration)
     }
 
     private fun resetBackground() {
