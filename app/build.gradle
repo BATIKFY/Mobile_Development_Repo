@@ -18,8 +18,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // API Base URL (wait for real API, it's just example)
-        buildConfigField("String", "BASE_URL", '"https://story-api.dicoding.dev/v1/"')
+        // API URL
+        buildConfigField("String", "BASE_URL", '"https://batikfy-capstone-cloud.et.r.appspot.com/"')
+        buildConfigField("String", "SCAN_URL", '"https://trigger-gx62wmm6uq-et.a.run.app/process-image"')
     }
 
     buildTypes {
