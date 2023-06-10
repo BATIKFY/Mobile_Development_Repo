@@ -7,6 +7,16 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <queries>
+
+        <!-- Gallery -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -17,6 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Batikfy"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.profile.password.PasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.account.AccountActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.detail.article.DetailArticleActivity"
             android:exported="false" />
@@ -31,10 +47,15 @@
             android:exported="false" />
         <activity
             android:name=".ui.game.quiz.QuizActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.game.quiz.QuizResultActivity"
             android:exported="false" />
         <activity
             android:name=".ui.game.puzzle.PuzzleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.favorite.FavoriteActivity"
             android:exported="false"

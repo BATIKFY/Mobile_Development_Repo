@@ -13,6 +13,8 @@ import com.batikfy.batikfy.databinding.FragmentProfileBinding
 import com.batikfy.batikfy.ui.auth.login.LoginActivity
 import com.batikfy.batikfy.ui.game.puzzle.PuzzleActivity
 import com.batikfy.batikfy.ui.game.quiz.QuizActivity
+import com.batikfy.batikfy.ui.profile.account.AccountActivity
+import com.batikfy.batikfy.ui.profile.password.PasswordActivity
 import com.batikfy.batikfy.utils.AuthPreference
 
 class ProfileFragment : Fragment(), View.OnClickListener {
@@ -48,10 +50,12 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id){
             R.id.menu_account_info  -> {
-                Toast.makeText(activity, "Account Info", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, AccountActivity::class.java)
+                startActivity(intent)
             }
             R.id.menu_change_pass  -> {
-                Toast.makeText(activity, "Change Password", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, PasswordActivity::class.java)
+                startActivity(intent)
             }
             R.id.menu_change_lang  -> {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))

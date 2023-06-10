@@ -15,7 +15,7 @@
     <string name="failed_take_pict">Failed to take a picture</string>
     <string name="success_take_pict">Success to take a picture</string>
     <string name="gallery">Gallery</string>
-    <string name="preview_image">preview image for your story</string>
+    <string name="preview_image">preview of your image</string>
     <string name="search_menu">Search menu</string>
     <string name="bookmark_menu">Bookmark menu</string>
     <string name="search_hint">Search by name</string>
@@ -40,9 +40,13 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="signup">Sign Up</string>
+    <string name="update">Update</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="renew_password">Confirm New Password</string>
     <string name="not_have_account">Don\'t have an account yet?</string>
     <string name="have_account">Already have an account?</string>
     <string name="error_name">Name is required</string>
@@ -51,6 +55,181 @@
     <string name="error_password">Password is required at least 8 characters</string>
     <string name="error_login">Failed to Login</string>
     <string name="error_register">Failed to Register</string>
+    <string name="failed_select_picture">Failed to Select a Picture</string>
     <string name="success_register">Registration is Successful</string>
+  
     <string name="read_more">Baca Lainnya</string>
+  
+    <string name="double_back_press">DOUBLE PRESS TO QUIT GAME</string>
+    <string name="analysis_result">Analysis Result</string>
+    <string name="batik_name_not_found">Batik Name Not Found</string>
+    <string name="batik_desc_not_found">Batik Description Not Found</string>
+
+    <!-- Puzzle - First button text -->
+    <string name="randomizing">Shuffling</string>
+    <string name="inversions">Counting Inversions</string>
+    <string name="randomized">Show Solution</string>
+    <string name="new_game">New Game</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+
+    <!-- Puzzle - Second button text -->
+    <string name="skip">Skip Solution</string>
+    <string name="upload_picture">Upload Picture</string>
+
+    <!-- Success message -->
+    <string name="user_solved">Nice!</string>
+    <string name="fastest_score">Fast!</string>
+    <string name="high_score">Bravo!</string>
+    <string name="fewest_score">Great!</string>
+    <string name="computer_solved">Moves</string>
+
+    <!-- Puzzle - Game statistics -->
+    <string name="default_move_count">-</string>
+    <string name="default_timer">-:--:--</string>
+    <string name="move_count">Move Count:&#xA0;</string>
+    <string name="fewest_moves">Fewest:&#xA0;</string>
+    <string name="timer">Timer:&#xA0;</string>
+    <string name="fastest_time">Fastest:&#xA0;</string>
+
+    <!-- Trivia -->
+    <string name="trivia">An 8-puzzle can be solved in at most 31 moves</string>
+    <string name="trivia_a_star">This app uses the A* algorithm to solve the puzzle</string>
+
+    <!-- Puzzle images -->
+    <string name="default_image">Batik #1</string>
+    <string-array name="puzzle_images">
+        <item>Batik #1</item>
+        <item>Batik #2</item>
+        <item>Batik #3</item>
+        <item>Batik #4</item>
+        <item>Batik #5</item>
+        <item>Batik #6</item>
+        <item>CUSTOM</item>
+    </string-array>
+
+    <!-- Puzzle - Image upload -->
+    <string name="no_permission">Insufficient permission to access Gallery</string>
+
+    <!-- Quiz - Question -->
+    <string-array name="question">
+        <item>Apa motif batik yang memiliki makna petuah untuk tidak pernah menyerah?</item>
+        <item>Motif batik yang menggabungkan gambar burung cendrawasih dengan tumbuhan dan bunga khas Papua adalah?</item>
+        <item>Batik tradisional dari Jakarta yang diakui oleh UNESCO sebagai warisan dunia adalah?</item>
+        <item>Dari manakah asal batik Pekalongan?</item>
+        <item>Apa yang dilambangkan oleh motif batik Kawung?</item>
+        <item>Batik Truntum merupakan motif batik yang berasal dari daerah?</item>
+        <item>Apa yang dilambangkan oleh batik Sekar Jagad?</item>
+        <item>Batik Pekalongan mendapat pengaruh dari budaya asing berikut, kecuali:</item>
+        <item>Batik Cendrawasih merupakan motif batik khas dari wilayah mana?</item>
+        <item>Motif Batik Megamendung berkembang dengan variasi corak yang unik di kawasan mana?</item>
+        <item>Apa yang menjadi ciri khas Batik Betawi?</item>
+        <item>Batik Sekar Jagad mengandung makna apa?</item>
+        <item>Apa yang menginspirasi motif Buketan dari Batik Bali?</item>
+        <item>Apa yang menjadi makna Batik Parang?</item>
+        <item>Apa peralatan utama yang digunakan dalam proses membatik tradisional?</item>
+    </string-array>
+
+    <!-- Quiz - Option -->
+    <string-array name="opt_1">
+        <item>a. Batik Parang</item>
+        <item>a. Batik Parang</item>
+        <item>a. Batik Betawi</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Hubungan masyarakat yang saling gotong-royong</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Keindahan alam Papua</item>
+        <item>a. Belanda</item>
+        <item>a. Yogyakarta</item>
+        <item>a. Pekalongan</item>
+        <item>a. Motif burung cendrawasih</item>
+        <item>a. Keanggunan dan keterbukaan</item>
+        <item>a. Terinspirasi oleh burung cendrawasih</item>
+        <item>a. Melambangkan keragaman di seluruh dunia</item>
+        <item>a. Kuas dan cat</item>
+    </string-array>
+    <string-array name="opt_2">
+        <item>b. Batik Pekalongan</item>
+        <item>b. Batik Cendrawasih</item>
+        <item>b. Batik Pekalongan</item>
+        <item>b. Jakarta</item>
+        <item>b. Buah kolang-kaling dari pohon aren</item>
+        <item>b. Surakarta</item>
+        <item>b. Hubungan masyarakat yang saling gotong-royong dan hidup damai</item>
+        <item>b. Arab</item>
+        <item>b. Bali</item>
+        <item>b. Yogyakarta</item>
+        <item>b. Motif topeng dan sepeda ontel</item>
+        <item>b. Keteduhan dan ketenangan</item>
+        <item>b. Terinspirasi oleh ukiran dinding candi di pulau Jawa</item>
+        <item>b. Menggambarkan kesinambungan dan ketekunan</item>
+        <item>b. Mesin jahit dan benang</item>
+    </string-array>
+    <string-array name="opt_3">
+        <item>c. Batik Sekar Jagad</item>
+        <item>c. Batik Kawung</item>
+        <item>c. Batik Bali</item>
+        <item>c. Pekalongan</item>
+        <item>c. Kerjasama antar keluarga</item>
+        <item>c. Pekalongan</item>
+        <item>c. Keragaman di seluruh dunia</item>
+        <item>c. Tiongkok</item>
+        <item>c. Papua</item>
+        <item>c. Cirebon</item>
+        <item>c. Motif buah kolang-kaling</item>
+        <item>c. Kesinambungan dan keteguhan</item>
+        <item>c. Terinspirasi oleh ikatan bunga</item>
+        <item>c. Mencerminkan hubungan masyarakat yang saling gotong-royong</item>
+        <item>c. Canting dan malam</item>
+    </string-array>
+    <string-array name="opt_4">
+        <item>d. Batik Sidoluhur</item>
+        <item>d. Batik Megamendung</item>
+        <item>d. Batik Jumputan</item>
+        <item>d. Bali</item>
+        <item>d. Hasil pembagian kerajaan Mataram</item>
+        <item>d. Bali</item>
+        <item>d. Kesinambungan dan ketekunan</item>
+        <item>d. India</item>
+        <item>d. Cirebon</item>
+        <item>d. Surakarta</item>
+        <item>d. Motif ikatan bunga</item>
+        <item>d. Keragaman dan keindahan</item>
+        <item>d. Terinspirasi oleh ikon-ikon Jakarta</item>
+        <item>d. Menampilkan motif bulat-bulat kecil</item>
+        <item>d. Pisau dan ukiran</item>
+    </string-array>
+    <string-array name="opt_true">
+        <item>a. Batik Parang</item>
+        <item>b. Batik Cendrawasih</item>
+        <item>a. Batik Betawi</item>
+        <item>c. Pekalongan</item>
+        <item>a. Hubungan masyarakat yang saling gotong-royong</item>
+        <item>b. Surakarta</item>
+        <item>c. Keragaman di seluruh dunia</item>
+        <item>d. India</item>
+        <item>c. Papua</item>
+        <item>c. Cirebon</item>
+        <item>b. Motif topeng dan sepeda ontel</item>
+        <item>d. Keragaman dan keindahan</item>
+        <item>c. Terinspirasi oleh ikatan bunga</item>
+        <item>b. Menggambarkan kesinambungan dan ketekunan</item>
+        <item>c. Canting dan malam</item>
+    </string-array>
+
+    <!-- Quiz -->
+    <string name="quiz">Quiz</string>
+    <string name="questions">QUESTIONS</string>
+    <string name="default_quiz_number">1/5</string>
+    <string name="default_quiz_timer">00:15</string>
+    <string name="option1">Option1</string>
+    <string name="option2">Option2</string>
+    <string name="option3">Option3</string>
+    <string name="option4">Option4</string>
+    <string name="greeting1">You\'re awesome!</string>
+    <string name="greeting2">You\'re cool!</string>
+    <string name="greeting3">You\'re a genius!</string>
+    <string name="retry">Retry</string>
+    <string name="main_menu">Main Menu</string>
+
 </resources>
