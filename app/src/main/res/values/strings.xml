@@ -57,6 +57,9 @@
     <string name="error_register">Failed to Register</string>
     <string name="failed_select_picture">Failed to Select a Picture</string>
     <string name="success_register">Registration is Successful</string>
+  
+    <string name="read_more">Baca Lainnya</string>
+  
     <string name="double_back_press">DOUBLE PRESS TO QUIT GAME</string>
     <string name="analysis_result">Analysis Result</string>
     <string name="batik_name_not_found">Batik Name Not Found</string>
