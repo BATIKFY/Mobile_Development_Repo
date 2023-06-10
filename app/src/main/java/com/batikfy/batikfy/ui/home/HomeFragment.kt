@@ -12,11 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.databinding.FragmentHomeBinding
+import com.batikfy.batikfy.utils.ViewModelFactory
 
 class HomeFragment : Fragment(), View.OnClickListener  {
 
     private var _binding: FragmentHomeBinding? = null
-    private val homeViewModel by viewModels<HomeViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,6 +33,15 @@ class HomeFragment : Fragment(), View.OnClickListener  {
 
         binding.banner.setOnClickListener(this)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
+        val homeViewModel: HomeViewModel by viewModels {
+            factory
+        }
     }
 
     override fun onDestroyView() {

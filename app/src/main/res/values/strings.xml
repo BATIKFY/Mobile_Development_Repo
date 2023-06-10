@@ -53,4 +53,7 @@
     <string name="error_register">Failed to Register</string>
     <string name="success_register">Registration is Successful</string>
     <string name="read_more">Baca Lainnya</string>
+    <string name="home_batik">Yuk, Lihat Batik Ini!</string>
+    <string name="home_article">Artikel</string>
+
 </resources>
