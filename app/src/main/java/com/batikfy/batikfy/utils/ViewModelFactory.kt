@@ -26,9 +26,9 @@ class ViewModelFactory private constructor(private val repository: BatikfyReposi
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
-        fun getInstance(context: Context): ViewModelFactory =
+        fun getInstance(context: Context, url: String): ViewModelFactory =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideRepository(context))
+                instance ?: ViewModelFactory(Injection.provideRepository(context, url))
             }.also { instance = it }
     }
 }
