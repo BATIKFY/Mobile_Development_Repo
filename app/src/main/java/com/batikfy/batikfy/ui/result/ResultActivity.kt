@@ -48,7 +48,7 @@ class ResultActivity : AppCompatActivity() {
         val file = reduceFileImage(pictureFile as File)
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
         val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "photo",
+            "image",
             file.name,
             requestImageFile
         )
@@ -84,8 +84,7 @@ class ResultActivity : AppCompatActivity() {
             "This is batik description that have some sentences. But I am to lazy add lorem ipsum, so yeah i wrote this instead."
 
         // set accuracy in donut chart
-        val score = data.confidence.toFloat()
-        val percentage = DecimalFormat("#.##").format((score * 100)).toFloat()
+        val percentage = data.confidence.toFloat()
         binding.progressResult.progress = percentage
     }
 
