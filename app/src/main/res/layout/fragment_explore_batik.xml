@@ -7,15 +7,28 @@
     android:padding="8dp"
     tools:context=".ui.explore.ExploreBatikFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_explore_batik"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_batik_love"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_explore_batik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_batik_love"/>
+
+        <!-- Empty View for give space for scrolling -->
+        <View
+            android:id="@+id/view_null"
+            android:layout_width="match_parent"
+            android:layout_height="64dp" />
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/loading"
