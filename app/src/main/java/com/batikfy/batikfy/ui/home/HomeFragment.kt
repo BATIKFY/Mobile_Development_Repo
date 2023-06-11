@@ -48,16 +48,14 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
             factory
         }
 
-        homeViewModel.getAllBatikData().observe(requireActivity()) { result ->
+        homeViewModel.getAllBatikData().observe(viewLifecycleOwner) { result ->
             if(result != null){
                 when (result) {
                     is Result.Success -> {
                         val selected4Data = result.data.data.batiks.shuffled().take(4)
-//                        gridBatikAdapter.setData(selected4Data)
-
 
                         // Init RecyclerView and Adapter
-                        val gridBatikAdapter = GridBatikAdapter(selected4Data) // Pass empty list initially
+                        val gridBatikAdapter = GridBatikAdapter(selected4Data)
                         gridBatikAdapter.setOnItemClickCallback(this)
 
                         binding.rvHomeBatik.apply {
@@ -78,7 +76,36 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                 }
             }
         }
+
+        homeViewModel.getAllArticleData().observe(viewLifecycleOwner) { result ->
+            if(result != null){
+                when (result) {
+                    is Result.Success -> {
+                        val selected3Data = result.data.data.blogs.shuffled().take(3)
+
+                        // Init RecyclerView and Adapter
+                        val gridArticleAdapter = GridArticleAdapter(selected3Data)
+
+                        binding.rvHomeArticle.apply {
+                            layoutManager = GridLayoutManager(requireContext(), 1)
+                            adapter = gridArticleAdapter
+                        }
+                    }
+                    is Result.Error -> {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Terjadi kesalahan" + result.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    is Result.Loading -> {
+                        // Tampilkan indikator loading
+                    }
+                }
+            }
+        }
     }
+
 
     private fun setBatikItems(batikItems: Result<List<BatikEntity>>?) {
     }

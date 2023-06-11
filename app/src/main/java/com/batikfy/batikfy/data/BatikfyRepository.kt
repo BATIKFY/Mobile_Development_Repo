@@ -6,10 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
 import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.local.room.BatikfyDao
-import com.batikfy.batikfy.data.remote.response.BatikItem
-import com.batikfy.batikfy.data.remote.response.BlogsItem
-import com.batikfy.batikfy.data.remote.response.GetBatikResponse
-import com.batikfy.batikfy.data.remote.response.PostScanResponse
+import com.batikfy.batikfy.data.remote.response.*
 import com.batikfy.batikfy.data.remote.retrofit.ApiService
 import com.batikfy.batikfy.model.ArticleDataDummy
 import com.batikfy.batikfy.model.BatikDataDummy
@@ -35,6 +32,17 @@ class BatikfyRepository private constructor(
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.e("HomeViewModel", "function get batik: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun getAllArticleNoDB(): LiveData<Result<GetArticleResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getAllArticle()
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("HomeViewModel", "function get article: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
     }

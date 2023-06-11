@@ -19,7 +19,7 @@ data class GetArticleResponse(
 
 data class DataArticle(
 
-	@field:SerializedName("blogs")
+	@field:SerializedName("blog")
 	val blogs: List<BlogsItem>
 )
 

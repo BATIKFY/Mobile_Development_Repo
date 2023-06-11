@@ -1,5 +1,6 @@
 package com.batikfy.batikfy.data.remote.retrofit
 
+import com.batikfy.batikfy.data.remote.response.GetArticleResponse
 import com.batikfy.batikfy.data.remote.response.GetBatikResponse
 import com.batikfy.batikfy.data.remote.response.PostScanResponse
 import okhttp3.MultipartBody
@@ -16,4 +17,8 @@ interface ApiService {
     // Get All Batik List
     @GET("batik")
     suspend fun getAllBatik(): GetBatikResponse
+
+    // Get All Article List
+    @GET("blog")
+    suspend fun getAllArticle(): GetArticleResponse
 }
