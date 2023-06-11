@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -110,6 +111,7 @@ class CameraActivity : AppCompatActivity() {
                         getString(R.string.success_take_pict),
                         Toast.LENGTH_SHORT
                     ).show()
+                    showLoading(true)
                     val intent = Intent(this@CameraActivity, ResultActivity::class.java)
                     intent.putExtra("picture", photoFile)
                     intent.putExtra(
@@ -152,6 +154,14 @@ class CameraActivity : AppCompatActivity() {
                 ).show()
             }
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
     }
 
     private fun onBack() {

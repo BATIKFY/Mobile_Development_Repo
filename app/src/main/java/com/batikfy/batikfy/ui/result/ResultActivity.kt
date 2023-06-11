@@ -2,28 +2,26 @@ package com.batikfy.batikfy.ui.result
 
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.batikfy.batikfy.BuildConfig
-import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
+import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.data.remote.response.PostScanResponse
 import com.batikfy.batikfy.databinding.ActivityResultBinding
 import com.batikfy.batikfy.utils.ViewModelFactory
 import com.batikfy.batikfy.utils.reduceFileImage
-import com.batikfy.batikfy.utils.rotateFile
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
-import java.text.DecimalFormat
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
@@ -45,39 +43,45 @@ class ResultActivity : AppCompatActivity() {
             binding.previewImageView.setImageBitmap(BitmapFactory.decodeFile(file.path))
         }
 
-        val file = reduceFileImage(pictureFile as File)
-        val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
-        val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "image",
-            file.name,
-            requestImageFile
-        )
-
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this, BuildConfig.SCAN_URL)
         val resultViewModel: ResultViewModel by viewModels {
             factory
         }
-        resultViewModel.scanImage(imageMultipart)
-            .observe(this) { result ->
-                if (result != null) {
-                    when (result) {
-                        is Result.Loading -> {
-                            showLoading(true)
-                        }
-                        is Result.Success -> {
-                            showLoading(false)
-                            setResult(result.data)
-                        }
-                        is Result.Error -> {
-                            showLoading(false)
-                            Toast.makeText(this, result.error, Toast.LENGTH_LONG).show()
+
+        lifecycleScope.launch {
+            val file = reduceFileImage(pictureFile as File)
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "image",
+                file.name,
+                requestImageFile
+            )
+
+            resultViewModel.scanImage(imageMultipart)
+                .observe(this@ResultActivity) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is Result.Loading -> {
+                                showLoading(true)
+                            }
+                            is Result.Success -> {
+                                showLoading(false)
+                                setResultData(result.data)
+                            }
+                            is Result.Error -> {
+                                showLoading(false)
+                                Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
+                                    .show()
+                            }
                         }
                     }
                 }
-            }
+        }
+
+
     }
 
-    private fun setResult(data: PostScanResponse) {
+    private fun setResultData(data: PostScanResponse) {
         // Temporary
         binding.tvBatikName.text = "Batik" + " " + data.predictedClass
         binding.tvBatikDesc.text =
