@@ -1,5 +1,6 @@
 package com.batikfy.batikfy.ui.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.batikfy.batikfy.R
+import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.remote.response.BatikItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class GridBatikAdapter(private val listBatiks: List<BatikItem>) :
+class GridBatikAdapter(private var listBatiks: List<BatikItem>) :
     RecyclerView.Adapter<GridBatikAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -39,15 +41,25 @@ class GridBatikAdapter(private val listBatiks: List<BatikItem>) :
         return listBatiks.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(newList: List<BatikItem>) {
+        listBatiks = newList
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvName: TextView = view.findViewById(R.id.tv_batik_grid)
         private val tvImage: ImageView = view.findViewById(R.id.iv_batik_grid)
 
         fun bind(batikItem: BatikItem) {
-            tvName.text = batikItem.id
+            tvName.text = batikItem.name
             Glide.with(itemView.context)
                 .load(batikItem.image)
                 .apply(RequestOptions.circleCropTransform())
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
+                )
                 .into(tvImage)
 
             itemView.setOnClickListener {

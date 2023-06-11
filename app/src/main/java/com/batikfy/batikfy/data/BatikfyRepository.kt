@@ -2,27 +2,41 @@ package com.batikfy.batikfy.data
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
+import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.local.room.BatikfyDao
 import com.batikfy.batikfy.data.remote.response.BatikItem
 import com.batikfy.batikfy.data.remote.response.BlogsItem
+import com.batikfy.batikfy.data.remote.response.GetBatikResponse
 import com.batikfy.batikfy.data.remote.response.PostScanResponse
 import com.batikfy.batikfy.data.remote.retrofit.ApiService
 import com.batikfy.batikfy.model.ArticleDataDummy
 import com.batikfy.batikfy.model.BatikDataDummy
 import com.batikfy.batikfy.utils.AppExecutors
 import okhttp3.MultipartBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BatikfyRepository private constructor(
     private val apiService: ApiService,
     private val batikfyDao: BatikfyDao,
     private val appExecutors: AppExecutors
 ) {
-    /**
-     * Ubah 2 fun ini supaya bisa pakai database
-     */
-    fun getBatik(): List<BatikItem> {
-        return BatikDataDummy.getData()
+    private val resultBatik = MediatorLiveData<Result<List<BatikEntity>>>()
+
+    fun getAllBatikNoDB(): LiveData<Result<GetBatikResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getAllBatik()
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("HomeViewModel", "function get batik: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
     }
 
     fun getArticle(): List<BlogsItem> {

@@ -11,8 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.batikfy.batikfy.BuildConfig
+import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
+import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.remote.response.BatikItem
 import com.batikfy.batikfy.databinding.FragmentHomeBinding
 import com.batikfy.batikfy.utils.ViewModelFactory
@@ -22,7 +24,7 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var gridBatikAdapter: GridBatikAdapter
+//    private lateinit var gridBatikAdapter: GridBatikAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,15 +37,6 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
 
         binding.banner.setOnClickListener(this)
 
-        // Init RecyclerView and Adapter
-        gridBatikAdapter = GridBatikAdapter(listOf()) // Pass empty list initially
-        gridBatikAdapter.setOnItemClickCallback(this)
-
-        binding.rvHomeBatik.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = gridBatikAdapter
-        }
-
         return root
     }
 
@@ -55,9 +48,39 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
             factory
         }
 
-//        homeViewModel.getBatikItems().observe(viewLifecycleOwner) { batikItems ->
-//            gridBatikAdapter.setBatikItems(batikItems)
-//        }
+        homeViewModel.getAllBatikData().observe(requireActivity()) { result ->
+            if(result != null){
+                when (result) {
+                    is Result.Success -> {
+                        val selected4Data = result.data.data.batiks.shuffled().take(4)
+//                        gridBatikAdapter.setData(selected4Data)
+
+
+                        // Init RecyclerView and Adapter
+                        val gridBatikAdapter = GridBatikAdapter(selected4Data) // Pass empty list initially
+                        gridBatikAdapter.setOnItemClickCallback(this)
+
+                        binding.rvHomeBatik.apply {
+                            layoutManager = GridLayoutManager(requireContext(), 2)
+                            adapter = gridBatikAdapter
+                        }
+                    }
+                    is Result.Error -> {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Terjadi kesalahan" + result.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    is Result.Loading -> {
+                        // Tampilkan indikator loading
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setBatikItems(batikItems: Result<List<BatikEntity>>?) {
     }
 
     override fun onDestroyView() {

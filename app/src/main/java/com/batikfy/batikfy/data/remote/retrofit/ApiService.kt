@@ -1,5 +1,6 @@
 package com.batikfy.batikfy.data.remote.retrofit
 
+import com.batikfy.batikfy.data.remote.response.GetBatikResponse
 import com.batikfy.batikfy.data.remote.response.PostScanResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -11,4 +12,8 @@ interface ApiService {
     suspend fun scanImage(
         @Part image: MultipartBody.Part
     ): PostScanResponse
+
+    // Get All Batik List
+    @GET("batik")
+    suspend fun getAllBatik(): GetBatikResponse
 }

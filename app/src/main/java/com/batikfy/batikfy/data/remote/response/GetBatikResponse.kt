@@ -20,8 +20,8 @@ data class GetBatikResponse(
 
 data class DataBatik(
 
-	@field:SerializedName("batik")
-	val batik: List<BatikItem>
+	@field:SerializedName("batiks")
+	val batiks: List<BatikItem>
 )
 
 data class BatikItem(

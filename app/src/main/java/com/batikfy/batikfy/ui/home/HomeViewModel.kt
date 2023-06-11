@@ -4,4 +4,5 @@ import androidx.lifecycle.ViewModel
 import com.batikfy.batikfy.data.BatikfyRepository
 
 class HomeViewModel(private val repository: BatikfyRepository) : ViewModel() {
+    fun getAllBatikData() = repository.getAllBatikNoDB()
 }
