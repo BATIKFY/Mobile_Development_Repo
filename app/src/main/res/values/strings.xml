@@ -57,11 +57,9 @@
     <string name="error_register">Failed to Register</string>
     <string name="failed_select_picture">Failed to Select a Picture</string>
     <string name="success_register">Registration is Successful</string>
-  
-    <string name="read_more">Baca Lainnya</string>
-  
     <string name="double_back_press">DOUBLE PRESS TO QUIT GAME</string>
     <string name="analysis_result">Analysis Result</string>
+    <string name="loading_data">Loading data …</string>
     <string name="batik_name_not_found">Batik Name Not Found</string>
     <string name="batik_desc_not_found">Batik Description Not Found</string>
 
@@ -231,5 +229,13 @@
     <string name="greeting3">You\'re a genius!</string>
     <string name="retry">Retry</string>
     <string name="main_menu">Main Menu</string>
+
+    <string name="read_more">Read More</string>
+    <string name="save_to_fav">Save to favorite list</string>
+    <string name="batik_name">Batik Name</string>
+    <string name="batik_image">Batik image</string>
+    <string name="article_title">Article Title: Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="article_image">Article image</string>
+    <string name="lorem50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper commodo enim eu ultrices. Aenean laoreet elit sed arcu pellentesque, ut consectetur diam condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non bibendum nibh, a aliquam eros. Morbi sed dignissim augue, congue condimentum eros. Praesent maximus arcu sit.</string>
 
 </resources>

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_article_love"
+            android:id="@+id/iv_article"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="10dp"
@@ -22,32 +22,52 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/article_image" />
 
         <TextView
-            android:id="@+id/tv_article_love_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_article_title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_article_love"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Judul Artikel" />
+            app:layout_constraintStart_toEndOf="@id/iv_article"
+            app:layout_constraintTop_toBottomOf="@id/iv_fav"
+            tools:text="@string/article_title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_article_detail"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_article_love"
-            app:layout_constraintTop_toBottomOf="@+id/tv_article_love_title"
-            tools:text="Potongan Isi Artikel" />
+            app:layout_constraintStart_toEndOf="@id/iv_article"
+            app:layout_constraintTop_toBottomOf="@id/tv_article_title"
+            tools:text="@string/lorem50"
+            android:ellipsize="end"
+            android:maxLines="3" />
+
+        <ImageView
+            android:id="@+id/iv_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:tag="Not Saved"
+            android:contentDescription="@string/save_to_fav"
+            android:src="@drawable/ic_not_favorite_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

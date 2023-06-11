@@ -72,6 +72,8 @@ class ResultActivity : AppCompatActivity() {
                                 showLoading(false)
                                 Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
                                     .show()
+                                binding.tvBatikName.text = resources.getString(R.string.batik_name_not_found)
+                                binding.tvBatikDesc.text = resources.getString(R.string.batik_desc_not_found)
                             }
                         }
                     }
