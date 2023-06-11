@@ -62,8 +62,10 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                             layoutManager = GridLayoutManager(requireContext(), 2)
                             adapter = gridBatikAdapter
                         }
+                        binding.loadingBatik.visibility = View.GONE
                     }
                     is Result.Error -> {
+                        binding.loadingBatik.visibility = View.GONE
                         Toast.makeText(
                             requireActivity(),
                             "Terjadi kesalahan" + result.error,
@@ -71,7 +73,7 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                         ).show()
                     }
                     is Result.Loading -> {
-                        // Tampilkan indikator loading
+                        binding.loadingBatik.visibility = View.VISIBLE
                     }
                 }
             }
@@ -90,8 +92,10 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                             layoutManager = GridLayoutManager(requireContext(), 1)
                             adapter = gridArticleAdapter
                         }
+                        binding.loadingArticle.visibility = View.GONE
                     }
                     is Result.Error -> {
+                        binding.loadingArticle.visibility = View.GONE
                         Toast.makeText(
                             requireActivity(),
                             "Terjadi kesalahan" + result.error,
@@ -99,7 +103,7 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                         ).show()
                     }
                     is Result.Loading -> {
-                        // Tampilkan indikator loading
+                        binding.loadingArticle.visibility = View.VISIBLE
                     }
                 }
             }
