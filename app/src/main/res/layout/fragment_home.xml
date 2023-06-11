@@ -9,7 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="64dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/banner"
@@ -84,7 +87,85 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_home_batik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/home_batik"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_batik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_home_batik"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_batik_other" />
+
+        <Button
+            android:id="@+id/read_more_btn_batik"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/read_more"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_rounded"
+            app:backgroundTint="@color/color30"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_home_batik" />
+
+        <TextView
+            android:id="@+id/text_home_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/home_article"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/read_more_btn_batik" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_home_article"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_article" />
+
+        <Button
+            android:id="@+id/read_more_btn_article"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/read_more"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_rounded"
+            app:backgroundTint="@color/color30"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_home_article" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
