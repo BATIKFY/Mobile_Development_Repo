@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.ActivityDetailBatikBinding
@@ -15,13 +16,15 @@ import com.batikfy.batikfy.utils.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DetailBatikActivity : AppCompatActivity() {
+class DetailBatikActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailBatikBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBatikBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.readMoreBtnBatik.setOnClickListener(this)
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
         val detailBatikViewModel: DetailBatikViewModel by viewModels {
@@ -107,5 +110,16 @@ class DetailBatikActivity : AppCompatActivity() {
 
     companion object {
         const val DETAIL_BATIK = "detail batik"
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.read_more_btn_batik -> {
+                val intent = Intent(this@DetailBatikActivity, MainActivity::class.java)
+                intent.putExtra("activeTab", R.id.navigation_explore)
+                intent.putExtra("activeFragment", "batik")
+                startActivity(intent)
+            }
+        }
     }
 }

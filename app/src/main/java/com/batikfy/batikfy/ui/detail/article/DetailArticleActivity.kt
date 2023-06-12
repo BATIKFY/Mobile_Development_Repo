@@ -1,11 +1,13 @@
 package com.batikfy.batikfy.ui.detail.article
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.ActivityDetailArticleBinding
@@ -14,13 +16,15 @@ import com.batikfy.batikfy.utils.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DetailArticleActivity : AppCompatActivity() {
+class DetailArticleActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailArticleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.readMoreBtnArticle.setOnClickListener(this)
 
         val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
         val detailArticleViewModel: DetailArticleViewModel by viewModels {
@@ -106,5 +110,16 @@ class DetailArticleActivity : AppCompatActivity() {
 
     companion object {
         const val DETAIL_ARTICLE = "detail article"
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.read_more_btn_article -> {
+                val intent = Intent(this@DetailArticleActivity, MainActivity::class.java)
+                intent.putExtra("activeTab", R.id.navigation_explore)
+                intent.putExtra("activeFragment", "article")
+                startActivity(intent)
+            }
+        }
     }
 }
