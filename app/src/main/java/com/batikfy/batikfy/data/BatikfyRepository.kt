@@ -48,6 +48,28 @@ class BatikfyRepository private constructor(
         }
     }
 
+    fun getDetailBatik(id: String): LiveData<Result<GetDetailBatikResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getDetailBatik(id)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("DetailBatikViewModel", "function get detail batik: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun getDetailArticle(id: String): LiveData<Result<GetDetailArticleResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getDetailArticle(id)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("DetailArticleViewModel", "function get detail article: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun getAllBatikWithDB(): LiveData<Result<List<BatikEntity>>> {
         resultBatik.value = Result.Loading
         appExecutors.diskIO.execute {
