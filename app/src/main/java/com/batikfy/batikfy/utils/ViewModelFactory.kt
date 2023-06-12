@@ -7,6 +7,8 @@ import com.batikfy.batikfy.data.BatikfyRepository
 import com.batikfy.batikfy.di.Injection
 import com.batikfy.batikfy.ui.auth.login.LoginViewModel
 import com.batikfy.batikfy.ui.auth.register.RegisterViewModel
+import com.batikfy.batikfy.ui.detail.article.DetailArticleViewModel
+import com.batikfy.batikfy.ui.detail.batik.DetailBatikViewModel
 import com.batikfy.batikfy.ui.explore.ExploreArticleViewModel
 import com.batikfy.batikfy.ui.explore.ExploreBatikViewModel
 import com.batikfy.batikfy.ui.home.HomeViewModel
@@ -28,6 +30,10 @@ class ViewModelFactory private constructor(private val repository: BatikfyReposi
             return ExploreBatikViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(ExploreArticleViewModel::class.java)) {
             return ExploreArticleViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(DetailBatikViewModel::class.java)) {
+            return DetailBatikViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(DetailArticleViewModel::class.java)) {
+            return DetailArticleViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
