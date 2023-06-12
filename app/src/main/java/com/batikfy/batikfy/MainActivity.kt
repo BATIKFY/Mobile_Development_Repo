@@ -17,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.batikfy.batikfy.databinding.ActivityMainBinding
 import com.batikfy.batikfy.ui.camera.CameraActivity
+import com.batikfy.batikfy.ui.explore.ExploreFragment
 import com.batikfy.batikfy.ui.result.ResultActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.File
@@ -67,7 +68,25 @@ class MainActivity : AppCompatActivity() {
                 supportActionBar?.hide()
             }
         }
+        if (intent.hasExtra("activeTab")) {
+            val activeTab = intent.getIntExtra("activeTab", R.id.navigation_home)
+            val activeFragment = intent.getStringExtra("activeFragment") ?: ""
+            val navController2 = findNavController(R.id.nav_host_fragment_activity_main)
+            navController2.navigate(R.id.navigation_home)
 
+            if (activeTab == R.id.navigation_explore) {
+                navController2.navigate(R.id.navigation_explore)
+
+                val bundle = Bundle()
+                bundle.putString("activeFragment", activeFragment)
+                val exploreFragment = ExploreFragment()
+                exploreFragment.arguments = bundle
+
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment_activity_main, exploreFragment)
+                    .commit()
+            }
+        }
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
                 this,

@@ -23,7 +23,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class ResultActivity : AppCompatActivity() {
+class ResultActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityResultBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +33,8 @@ class ResultActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.result)
         onBack()
+
+        binding.readMoreBtnBatik.setOnClickListener(this)
 
         val pictureFile = intent.getSerializableExtra("picture") as? File
 
@@ -53,71 +55,72 @@ class ResultActivity : AppCompatActivity() {
                 file.name,
                 requestImageFile
             )
-
-            resultViewModel.scanImage(imageMultipart)
-                .observe(this@ResultActivity) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is Result.Loading -> {
-                                showLoading(true)
-                                binding.tvBatikName.text =
-                                    resources.getString(R.string.loading_data)
-                                binding.tvBatikDesc.text =
-                                    resources.getString(R.string.loading_data)
-                            }
-                            is Result.Success -> {
-                                showLoading(false)
-                                resultViewModel.getBatikData(result.data.predictedClass)
-                                    .observe(this@ResultActivity) { result2 ->
-                                        if (result2 != null) {
-                                            when (result2) {
-                                                is Result.Loading -> {
-                                                    showLoading(true)
-                                                    binding.tvBatikName.text =
-                                                        resources.getString(R.string.loading_data)
-                                                    binding.tvBatikDesc.text =
-                                                        resources.getString(R.string.loading_data)
-                                                }
-                                                is Result.Success -> {
-                                                    showLoading(false)
-                                                    binding.tvBatikName.text =
-                                                        result2.data.data.batik?.get(0)?.name
-                                                    binding.tvBatikDesc.text =
-                                                        result2.data.data.batik?.get(0)?.meaning
-                                                }
-                                                is Result.Error -> {
-                                                    showLoading(false)
-                                                    Toast.makeText(
-                                                        this@ResultActivity,
-                                                        result2.error,
-                                                        Toast.LENGTH_LONG
-                                                    )
-                                                        .show()
-                                                    binding.tvBatikName.text =
-                                                        resources.getString(R.string.batik_name_not_found)
-                                                    binding.tvBatikDesc.text =
-                                                        resources.getString(R.string.batik_desc_not_found)
+            if(imageMultipart != null){
+                resultViewModel.scanImage(imageMultipart)
+                    .observe(this@ResultActivity) { result ->
+                        if (result != null) {
+                            when (result) {
+                                is Result.Loading -> {
+                                    showLoading(true)
+                                    binding.tvBatikName.text =
+                                        resources.getString(R.string.loading_data)
+                                    binding.tvBatikDesc.text =
+                                        resources.getString(R.string.loading_data)
+                                }
+                                is Result.Success -> {
+                                    showLoading(false)
+                                    resultViewModel.getBatikData(result.data.predictedClass)
+                                        .observe(this@ResultActivity) { result2 ->
+                                            if (result2 != null) {
+                                                when (result2) {
+                                                    is Result.Loading -> {
+                                                        showLoading(true)
+                                                        binding.tvBatikName.text =
+                                                            resources.getString(R.string.loading_data)
+                                                        binding.tvBatikDesc.text =
+                                                            resources.getString(R.string.loading_data)
+                                                    }
+                                                    is Result.Success -> {
+                                                        showLoading(false)
+                                                        binding.tvBatikName.text =
+                                                            result2.data.data.batik?.get(0)?.name
+                                                        binding.tvBatikDesc.text =
+                                                            result2.data.data.batik?.get(0)?.meaning
+                                                    }
+                                                    is Result.Error -> {
+                                                        showLoading(false)
+                                                        Toast.makeText(
+                                                            this@ResultActivity,
+                                                            result2.error,
+                                                            Toast.LENGTH_LONG
+                                                        )
+                                                            .show()
+                                                        binding.tvBatikName.text =
+                                                            resources.getString(R.string.batik_name_not_found)
+                                                        binding.tvBatikDesc.text =
+                                                            resources.getString(R.string.batik_desc_not_found)
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
 
-                                // set accuracy in donut chart
-                                val percentage = result.data.confidence.toFloat()
-                                binding.progressResult.progress = percentage
-                            }
-                            is Result.Error -> {
-                                showLoading(false)
-                                Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
-                                    .show()
-                                binding.tvBatikName.text =
-                                    resources.getString(R.string.batik_name_not_found)
-                                binding.tvBatikDesc.text =
-                                    resources.getString(R.string.batik_desc_not_found)
+                                    // set accuracy in donut chart
+                                    val percentage = result.data.confidence.toFloat()
+                                    binding.progressResult.progress = percentage
+                                }
+                                is Result.Error -> {
+                                    showLoading(false)
+                                    Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
+                                        .show()
+                                    binding.tvBatikName.text =
+                                        resources.getString(R.string.batik_name_not_found)
+                                    binding.tvBatikDesc.text =
+                                        resources.getString(R.string.batik_desc_not_found)
+                                }
                             }
                         }
                     }
-                }
+            }
         }
 
         resultViewModel.getAllBatikData().observe(this) { result ->
@@ -172,5 +175,16 @@ class ResultActivity : AppCompatActivity() {
 
     companion object {
         const val CAMERA_X_RESULT = 200
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.read_more_btn_batik -> {
+                val intent = Intent(this@ResultActivity, MainActivity::class.java)
+                intent.putExtra("activeTab", R.id.navigation_explore)
+                intent.putExtra("activeFragment", "batik")
+                startActivity(intent)
+            }
+        }
     }
 }

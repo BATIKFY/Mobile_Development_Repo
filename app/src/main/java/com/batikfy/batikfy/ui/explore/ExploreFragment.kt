@@ -38,6 +38,15 @@ class ExploreFragment : Fragment(), MenuProvider {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        if (arguments != null && requireArguments().containsKey("activeFragment")) {
+            val activeFragment = requireArguments().getString("activeFragment")
+            if (activeFragment == "batik") {
+                binding.viewPager.setCurrentItem(0, false)
+            } else if (activeFragment == "article") {
+                binding.viewPager.setCurrentItem(1, false)
+            }
+        }
+
 //        //example view with viewmodel
 //        val textView: TextView = binding.textExplore
 //        exploreViewModel.text.observe(viewLifecycleOwner) {
