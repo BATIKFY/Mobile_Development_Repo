@@ -70,6 +70,17 @@ class BatikfyRepository private constructor(
         }
     }
 
+    fun getSearchBatikByName(keyword: String): LiveData<Result<GetBatikByNameResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getSearchBatikByName(keyword)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("Search batik by name", "function search batik: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun getAllBatikWithDB(): LiveData<Result<List<BatikEntity>>> {
         resultBatik.value = Result.Loading
         appExecutors.diskIO.execute {

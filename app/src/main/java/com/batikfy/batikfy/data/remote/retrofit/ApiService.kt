@@ -29,6 +29,11 @@ interface ApiService {
         @Path("id") id: String
     ): GetDetailArticleResponse
 
+    @GET("batik/name/{keyword}")
+    suspend fun getSearchBatikByName(
+        @Path("keyword") keyword: String
+    ): GetBatikByNameResponse
+
     // Still struggling with local storage
     @GET("batik")
     fun getAllBatikWithDB(): Call<GetBatikResponse>
