@@ -1,8 +1,6 @@
 package com.batikfy.batikfy.data.remote.retrofit
 
-import com.batikfy.batikfy.data.remote.response.GetArticleResponse
-import com.batikfy.batikfy.data.remote.response.GetBatikResponse
-import com.batikfy.batikfy.data.remote.response.PostScanResponse
+import com.batikfy.batikfy.data.remote.response.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -15,14 +13,24 @@ interface ApiService {
         @Url url: String
     ): PostScanResponse
 
-    // Get All Batik List
     @GET("batik")
     suspend fun getAllBatik(): GetBatikResponse
 
+    @GET("blog")
+    suspend fun getAllArticle(): GetArticleResponse
+
+    @GET("batik/{id}")
+    suspend fun getDetailBatik(
+        @Path("id") id: String
+    ): GetDetailBatikResponse
+
+    @GET("blog/{id}")
+    suspend fun getDetailArticle(
+        @Path("id") id: String
+    ): GetDetailArticleResponse
+
+    // Still struggling with local storage
     @GET("batik")
     fun getAllBatikWithDB(): Call<GetBatikResponse>
 
-    // Get All Article List
-    @GET("blog")
-    suspend fun getAllArticle(): GetArticleResponse
 }
