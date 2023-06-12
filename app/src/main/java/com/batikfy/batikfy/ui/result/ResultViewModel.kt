@@ -6,4 +6,6 @@ import okhttp3.MultipartBody
 
 class ResultViewModel(private val repository: BatikfyRepository) : ViewModel() {
     fun scanImage(file: MultipartBody.Part) = repository.scanImage(file)
+    fun getBatikData(keyword: String) = repository.getSearchBatikByName(keyword)
+    fun getAllBatikData() = repository.getAllBatikNoDB()
 }

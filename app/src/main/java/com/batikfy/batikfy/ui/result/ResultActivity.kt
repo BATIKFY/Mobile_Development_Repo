@@ -9,12 +9,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.batikfy.batikfy.BuildConfig
+import androidx.recyclerview.widget.GridLayoutManager
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
-import com.batikfy.batikfy.data.remote.response.PostScanResponse
 import com.batikfy.batikfy.databinding.ActivityResultBinding
+import com.batikfy.batikfy.ui.home.GridBatikAdapter
 import com.batikfy.batikfy.utils.ViewModelFactory
 import com.batikfy.batikfy.utils.reduceFileImage
 import kotlinx.coroutines.launch
@@ -25,7 +25,6 @@ import java.io.File
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
-    private var getFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +35,6 @@ class ResultActivity : AppCompatActivity() {
         onBack()
 
         val pictureFile = intent.getSerializableExtra("picture") as? File
-        val isBackCamera = intent.getBooleanExtra("isBackCamera", true)
 
         pictureFile?.let { file ->
             binding.previewImageView.setImageBitmap(BitmapFactory.decodeFile(file.path))
@@ -62,10 +60,51 @@ class ResultActivity : AppCompatActivity() {
                         when (result) {
                             is Result.Loading -> {
                                 showLoading(true)
+                                binding.tvBatikName.text =
+                                    resources.getString(R.string.loading_data)
+                                binding.tvBatikDesc.text =
+                                    resources.getString(R.string.loading_data)
                             }
                             is Result.Success -> {
                                 showLoading(false)
-                                setResultData(result.data)
+                                resultViewModel.getBatikData(result.data.predictedClass)
+                                    .observe(this@ResultActivity) { result2 ->
+                                        if (result2 != null) {
+                                            when (result2) {
+                                                is Result.Loading -> {
+                                                    showLoading(true)
+                                                    binding.tvBatikName.text =
+                                                        resources.getString(R.string.loading_data)
+                                                    binding.tvBatikDesc.text =
+                                                        resources.getString(R.string.loading_data)
+                                                }
+                                                is Result.Success -> {
+                                                    showLoading(false)
+                                                    binding.tvBatikName.text =
+                                                        result2.data.data.batik?.get(0)?.name
+                                                    binding.tvBatikDesc.text =
+                                                        result2.data.data.batik?.get(0)?.meaning
+                                                }
+                                                is Result.Error -> {
+                                                    showLoading(false)
+                                                    Toast.makeText(
+                                                        this@ResultActivity,
+                                                        result2.error,
+                                                        Toast.LENGTH_LONG
+                                                    )
+                                                        .show()
+                                                    binding.tvBatikName.text =
+                                                        resources.getString(R.string.batik_name_not_found)
+                                                    binding.tvBatikDesc.text =
+                                                        resources.getString(R.string.batik_desc_not_found)
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                // set accuracy in donut chart
+                                val percentage = result.data.confidence.toFloat()
+                                binding.progressResult.progress = percentage
                             }
                             is Result.Error -> {
                                 showLoading(false)
@@ -81,18 +120,36 @@ class ResultActivity : AppCompatActivity() {
                 }
         }
 
+        resultViewModel.getAllBatikData().observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Success -> {
+                        val selected4Data = result.data.data.batiks.shuffled().take(4)
 
-    }
+                        // Init RecyclerView and Adapter
+                        val gridBatikAdapter = GridBatikAdapter(selected4Data)
 
-    private fun setResultData(data: PostScanResponse) {
-        // Temporary
-        binding.tvBatikName.text = "Batik" + " " + data.predictedClass
-        binding.tvBatikDesc.text =
-            "This is batik description that have some sentences. But I am to lazy add lorem ipsum, so yeah i wrote this instead."
+                        binding.rvReadMoreBatik.apply {
+                            layoutManager = GridLayoutManager(this@ResultActivity, 2)
+                            adapter = gridBatikAdapter
+                        }
+                        binding.loading.visibility = View.GONE
+                    }
+                    is Result.Error -> {
+                        binding.loading.visibility = View.GONE
+                        Toast.makeText(
+                            this@ResultActivity,
+                            resources.getString(R.string.error_occurred) + ": " + result.error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    is Result.Loading -> {
+                        binding.loading.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
 
-        // set accuracy in donut chart
-        val percentage = data.confidence.toFloat()
-        binding.progressResult.progress = percentage
     }
 
     private fun showLoading(isLoading: Boolean) {
