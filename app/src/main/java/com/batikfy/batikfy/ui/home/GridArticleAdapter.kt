@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.remote.response.BlogsItem
+import com.batikfy.batikfy.ui.detail.article.DetailArticleActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -54,9 +55,9 @@ class GridArticleAdapter(private var listBatiks: List<BlogsItem>) :
                 .into(tvImage)
 
             itemView.setOnClickListener {
-//                val intent = Intent(itemView.context, DetailActivity::class.java)
-////                intent.putExtra(DetailActivity.EXTRA_DETAIL, favs.username)
-//                itemView.context.startActivity(intent)
+                val intent = Intent(itemView.context, DetailArticleActivity::class.java)
+                intent.putExtra(DetailArticleActivity.DETAIL_ARTICLE, blogItem.id)
+                itemView.context.startActivity(intent)
             }
         }
     }

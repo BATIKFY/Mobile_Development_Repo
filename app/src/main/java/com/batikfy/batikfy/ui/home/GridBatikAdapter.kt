@@ -1,6 +1,7 @@
 package com.batikfy.batikfy.ui.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.remote.response.BatikItem
+import com.batikfy.batikfy.ui.detail.batik.DetailBatikActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -63,7 +65,9 @@ class GridBatikAdapter(private var listBatiks: List<BatikItem>) :
                 .into(tvImage)
 
             itemView.setOnClickListener {
-                onItemClickCallback.onItemClicked(batikItem)
+                val intent = Intent(itemView.context, DetailBatikActivity::class.java)
+                intent.putExtra(DetailBatikActivity.DETAIL_BATIK, batikItem.id)
+                itemView.context.startActivity(intent)
             }
         }
     }

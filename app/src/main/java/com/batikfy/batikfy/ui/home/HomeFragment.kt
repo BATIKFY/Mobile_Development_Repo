@@ -11,17 +11,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
-import com.batikfy.batikfy.data.local.entity.BatikEntity
-import com.batikfy.batikfy.data.remote.response.BatikItem
 import com.batikfy.batikfy.databinding.FragmentHomeBinding
 import com.batikfy.batikfy.utils.ViewModelFactory
 
-class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemClickCallback {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-//    private lateinit var gridBatikAdapter: GridBatikAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +49,6 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
 
                         // Init RecyclerView and Adapter
                         val gridBatikAdapter = GridBatikAdapter(selected4Data)
-                        gridBatikAdapter.setOnItemClickCallback(this)
 
                         binding.rvHomeBatik.apply {
                             layoutManager = GridLayoutManager(requireContext(), 2)
@@ -110,10 +105,6 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
         homeViewModel.getAllBatikDataWithDB()
     }
 
-
-    private fun setBatikItems(batikItems: Result<List<BatikEntity>>?) {
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -126,8 +117,5 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                 mainActivity?.navigateToScan()
             }
         }
-    }
-
-    override fun onItemClicked(data: BatikItem) {
     }
 }

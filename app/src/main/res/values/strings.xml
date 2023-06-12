@@ -231,6 +231,7 @@
     <string name="main_menu">Main Menu</string>
 
     <string name="read_more">Read More</string>
+    <string name="error_occurred">Error occurred</string>
     <string name="save_to_fav">Save to favorite list</string>
     <string name="batik_name">Batik Name</string>
     <string name="batik_image">Batik image</string>
