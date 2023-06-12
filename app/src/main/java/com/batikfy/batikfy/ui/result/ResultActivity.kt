@@ -32,7 +32,6 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         supportActionBar?.title = getString(R.string.result)
         onBack()
 
@@ -43,7 +42,7 @@ class ResultActivity : AppCompatActivity() {
             binding.previewImageView.setImageBitmap(BitmapFactory.decodeFile(file.path))
         }
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this, BuildConfig.SCAN_URL)
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
         val resultViewModel: ResultViewModel by viewModels {
             factory
         }
@@ -72,8 +71,10 @@ class ResultActivity : AppCompatActivity() {
                                 showLoading(false)
                                 Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
                                     .show()
-                                binding.tvBatikName.text = resources.getString(R.string.batik_name_not_found)
-                                binding.tvBatikDesc.text = resources.getString(R.string.batik_desc_not_found)
+                                binding.tvBatikName.text =
+                                    resources.getString(R.string.batik_name_not_found)
+                                binding.tvBatikDesc.text =
+                                    resources.getString(R.string.batik_desc_not_found)
                             }
                         }
                     }

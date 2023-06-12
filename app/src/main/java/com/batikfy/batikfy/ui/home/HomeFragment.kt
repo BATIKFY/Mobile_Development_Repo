@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.batikfy.batikfy.BuildConfig
-import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
+import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.remote.response.BatikItem
 import com.batikfy.batikfy.databinding.FragmentHomeBinding
@@ -43,13 +40,13 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity(), BuildConfig.BASE_URL)
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
         val homeViewModel: HomeViewModel by viewModels {
             factory
         }
 
         homeViewModel.getAllBatikData().observe(viewLifecycleOwner) { result ->
-            if(result != null){
+            if (result != null) {
                 when (result) {
                     is Result.Success -> {
                         val selected4Data = result.data.data.batiks.shuffled().take(4)
@@ -80,7 +77,7 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
         }
 
         homeViewModel.getAllArticleData().observe(viewLifecycleOwner) { result ->
-            if(result != null){
+            if (result != null) {
                 when (result) {
                     is Result.Success -> {
                         val selected3Data = result.data.data.blogs.shuffled().take(3)
@@ -120,8 +117,8 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
     }
 
     override fun onClick(v: View?) {
-        when (v?.id){
-            R.id.banner  -> {
+        when (v?.id) {
+            R.id.banner -> {
                 val mainActivity = activity as? MainActivity
                 mainActivity?.navigateToScan()
             }

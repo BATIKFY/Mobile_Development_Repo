@@ -1,20 +1,16 @@
 package com.batikfy.batikfy.ui.explore
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.batikfy.batikfy.BuildConfig
-import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.FragmentExploreBatikBinding
-import com.batikfy.batikfy.ui.home.GridBatikAdapter
 import com.batikfy.batikfy.utils.ViewModelFactory
 
 class ExploreBatikFragment : Fragment() {
@@ -34,18 +30,19 @@ class ExploreBatikFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity(), BuildConfig.BASE_URL)
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
         val exploreBatikViewModel: ExploreBatikViewModel by viewModels {
             factory
         }
 
         exploreBatikViewModel.getAllBatikData().observe(viewLifecycleOwner) { result ->
-            if(result != null){
+            if (result != null) {
                 when (result) {
                     is Result.Success -> {
                         val layoutManager = LinearLayoutManager(requireActivity())
                         binding?.rvExploreBatik?.layoutManager = layoutManager
-                        val itemDecoration = DividerItemDecoration(requireActivity(), layoutManager.orientation)
+                        val itemDecoration =
+                            DividerItemDecoration(requireActivity(), layoutManager.orientation)
                         binding?.rvExploreBatik?.addItemDecoration(itemDecoration)
                         val adapter = ExploreBatikAdapter(result.data.data.batiks)
                         binding?.rvExploreBatik?.adapter = adapter

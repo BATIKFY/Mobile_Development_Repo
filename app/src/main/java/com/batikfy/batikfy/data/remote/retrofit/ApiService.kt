@@ -9,9 +9,10 @@ import retrofit2.http.*
 
 interface ApiService {
     @Multipart
-    @POST("process-image")
+    @POST()
     suspend fun scanImage(
-        @Part image: MultipartBody.Part
+        @Part image: MultipartBody.Part,
+        @Url url: String
     ): PostScanResponse
 
     // Get All Batik List

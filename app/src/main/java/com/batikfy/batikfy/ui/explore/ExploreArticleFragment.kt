@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.batikfy.batikfy.BuildConfig
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.FragmentExploreArticleBinding
 import com.batikfy.batikfy.utils.ViewModelFactory
@@ -32,7 +31,7 @@ class ExploreArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val factory: ViewModelFactory =
-            ViewModelFactory.getInstance(requireActivity(), BuildConfig.BASE_URL)
+            ViewModelFactory.getInstance(requireActivity())
         val exploreArticleViewModel: ExploreArticleViewModel by viewModels {
             factory
         }

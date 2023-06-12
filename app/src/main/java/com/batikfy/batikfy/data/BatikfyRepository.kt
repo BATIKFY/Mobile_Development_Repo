@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
+import com.batikfy.batikfy.BuildConfig
 import com.batikfy.batikfy.data.local.entity.BatikEntity
 import com.batikfy.batikfy.data.local.room.BatikfyDao
 import com.batikfy.batikfy.data.remote.response.*
@@ -56,7 +57,7 @@ class BatikfyRepository private constructor(
     ): LiveData<Result<PostScanResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.scanImage(file)
+            val response = apiService.scanImage(file, BuildConfig.SCAN_URL+"process-image")
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.e("ResultViewModel", "function scan: ${e.message.toString()}")
