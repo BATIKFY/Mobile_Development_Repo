@@ -13,7 +13,7 @@ import com.batikfy.batikfy.data.local.entity.BatikEntity
 interface BatikfyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBatik(batik: List<BatikEntity>){
+    fun insertBatik(batik: List<BatikEntity>){
         Log.d("BatikfyDao", "Inserting batik: $batik")
     }
 

@@ -48,6 +48,41 @@ class BatikfyRepository private constructor(
         }
     }
 
+    fun getAllBatikWithDB(): LiveData<Result<List<BatikEntity>>> {
+        resultBatik.value = Result.Loading
+        appExecutors.diskIO.execute {
+            try {
+                val response = apiService.getAllBatikWithDB().execute()
+                if (response.isSuccessful) {
+                    val batiks = response.body()?.data?.batiks
+                    val batikList = ArrayList<BatikEntity>()
+                    batiks?.forEach { batik ->
+                        val isBookmarked = batikfyDao.isBatikBookmarkedById(batik.id)
+                        val userAccount = BatikEntity(
+                            id = batik.id,
+                            name = batik.name,
+                            origin = batik.origin,
+                            meaning = batik.meaning,
+                            image = batik.image,
+                            isBookmarked = isBookmarked
+                        )
+                        batikList.add(userAccount)
+                    }
+                    batikfyDao.deleteAllBatik()
+                    batikfyDao.insertBatik(batikList)
+                    resultBatik.postValue(Result.Success(batikList))
+                } else {
+                    resultBatik.postValue(Result.Error("Failed to fetch data"))
+                    Log.e("Call GetBatikResponse", "Failed to fetch data")
+                }
+            } catch (e: Exception) {
+                resultBatik.postValue(Result.Error(e.message.toString()))
+                Log.e("Call GetBatikResponse", e.message.toString())
+            }
+        }
+        return resultBatik
+    }
+
     fun getArticle(): List<BlogsItem> {
         return ArticleDataDummy.getData()
     }

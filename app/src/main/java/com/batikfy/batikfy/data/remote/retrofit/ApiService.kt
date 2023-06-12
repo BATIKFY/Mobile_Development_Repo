@@ -19,6 +19,9 @@ interface ApiService {
     @GET("batik")
     suspend fun getAllBatik(): GetBatikResponse
 
+    @GET("batik")
+    fun getAllBatikWithDB(): Call<GetBatikResponse>
+
     // Get All Article List
     @GET("blog")
     suspend fun getAllArticle(): GetArticleResponse

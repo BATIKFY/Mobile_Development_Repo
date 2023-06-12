@@ -238,6 +238,8 @@
     <string name="article_image">Article image</string>
     <string name="home_batik">Let\'s take a look at this batik</string>
     <string name="home_article">Please also read this article</string>
+    <string name="origin">Origin:</string>
+    <string name="origin_batik">Origin region of batik</string>
     <string name="lorem50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper commodo enim eu ultrices. Aenean laoreet elit sed arcu pellentesque, ut consectetur diam condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non bibendum nibh, a aliquam eros. Morbi sed dignissim augue, congue condimentum eros. Praesent maximus arcu sit.</string>
 
 </resources>

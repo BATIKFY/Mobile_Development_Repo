@@ -105,6 +105,9 @@ class HomeFragment : Fragment(), View.OnClickListener, GridBatikAdapter.OnItemCl
                 }
             }
         }
+
+        // local storage feature - still struggling with insert
+        homeViewModel.getAllBatikDataWithDB()
     }
 
 
