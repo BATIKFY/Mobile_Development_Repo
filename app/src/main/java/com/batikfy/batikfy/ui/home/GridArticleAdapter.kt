@@ -1,6 +1,5 @@
 package com.batikfy.batikfy.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -30,12 +29,6 @@ class GridArticleAdapter(private var listBatiks: List<BlogsItem>) :
 
     override fun getItemCount(): Int {
         return listBatiks.size
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(newList: List<BlogsItem>) {
-        listBatiks = newList
-        notifyDataSetChanged()
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -40,10 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_article_title"
-            tools:text="@string/lorem50"/>
+            tools:text="@string/lorem50"
+            tools:targetApi="o" />
 
         <TextView
             android:id="@+id/source"
