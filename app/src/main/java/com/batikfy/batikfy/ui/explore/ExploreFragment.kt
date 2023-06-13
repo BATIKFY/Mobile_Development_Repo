@@ -79,16 +79,20 @@ class ExploreFragment : Fragment(), MenuProvider {
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.isEmpty()) {
-                    Toast.makeText(requireActivity(), "Query is empty", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireActivity(), newText, Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(
+                    requireActivity(),
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return true
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(requireActivity(), query, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity(),
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return true
             }
         })
