@@ -55,7 +55,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
                 file.name,
                 requestImageFile
             )
-            if(imageMultipart != null){
+            if (imageMultipart != null) {
                 resultViewModel.scanImage(imageMultipart)
                     .observe(this@ResultActivity) { result ->
                         if (result != null) {
@@ -110,7 +110,11 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
                                 }
                                 is Result.Error -> {
                                     showLoading(false)
-                                    Toast.makeText(this@ResultActivity, result.error, Toast.LENGTH_LONG)
+                                    Toast.makeText(
+                                        this@ResultActivity,
+                                        result.error,
+                                        Toast.LENGTH_LONG
+                                    )
                                         .show()
                                     binding.tvBatikName.text =
                                         resources.getString(R.string.batik_name_not_found)
@@ -180,10 +184,15 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.read_more_btn_batik -> {
-                val intent = Intent(this@ResultActivity, MainActivity::class.java)
-                intent.putExtra("activeTab", R.id.navigation_explore)
-                intent.putExtra("activeFragment", "batik")
-                startActivity(intent)
+                Toast.makeText(
+                    this@ResultActivity,
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val intent = Intent(this@ResultActivity, MainActivity::class.java)
+//                intent.putExtra("activeTab", R.id.navigation_explore)
+//                intent.putExtra("activeFragment", "batik")
+//                startActivity(intent)
             }
         }
     }

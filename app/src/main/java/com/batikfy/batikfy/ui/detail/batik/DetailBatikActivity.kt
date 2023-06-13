@@ -1,13 +1,11 @@
 package com.batikfy.batikfy.ui.detail.batik
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.ActivityDetailBatikBinding
@@ -32,7 +30,7 @@ class DetailBatikActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         val id = intent.getStringExtra(DETAIL_BATIK) ?: ""
-        if (id != ""){
+        if (id != "") {
             detailBatikViewModel.getDetailBatik(id).observe(this) { result ->
                 if (result != null) {
                     when (result) {
@@ -52,8 +50,10 @@ class DetailBatikActivity : AppCompatActivity(), View.OnClickListener {
                         is Result.Error -> {
                             binding.loading.visibility = View.GONE
                             binding.tvBatikName.text = resources.getString(R.string.error_occurred)
-                            binding.tvBatikOrigin.text = resources.getString(R.string.error_occurred)
-                            binding.tvBatikMeaning.text = resources.getString(R.string.error_occurred)
+                            binding.tvBatikOrigin.text =
+                                resources.getString(R.string.error_occurred)
+                            binding.tvBatikMeaning.text =
+                                resources.getString(R.string.error_occurred)
                             Glide.with(this@DetailBatikActivity)
                                 .load(R.drawable.ic_error)
                                 .into(binding.ivBatik)
@@ -115,10 +115,15 @@ class DetailBatikActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.read_more_btn_batik -> {
-                val intent = Intent(this@DetailBatikActivity, MainActivity::class.java)
-                intent.putExtra("activeTab", R.id.navigation_explore)
-                intent.putExtra("activeFragment", "batik")
-                startActivity(intent)
+                Toast.makeText(
+                    this@DetailBatikActivity,
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val intent = Intent(this@DetailBatikActivity, MainActivity::class.java)
+//                intent.putExtra("activeTab", R.id.navigation_explore)
+//                intent.putExtra("activeFragment", "batik")
+//                startActivity(intent)
             }
         }
     }

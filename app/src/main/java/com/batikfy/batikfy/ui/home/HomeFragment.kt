@@ -29,6 +29,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val root: View = binding.root
 
         binding.banner.setOnClickListener(this)
+        binding.readMoreBtnBatik.setOnClickListener(this)
+        binding.readMoreBtnArticle.setOnClickListener(this)
 
         return root
     }
@@ -115,6 +117,28 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.banner -> {
                 val mainActivity = activity as? MainActivity
                 mainActivity?.navigateToScan()
+            }
+            R.id.read_more_btn_batik -> {
+                Toast.makeText(
+                    requireActivity(),
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val intent = Intent(requireActivity(), MainActivity::class.java)
+//                intent.putExtra("activeTab", R.id.navigation_explore)
+//                intent.putExtra("activeFragment", "batik")
+//                startActivity(intent)
+            }
+            R.id.read_more_btn_article -> {
+                Toast.makeText(
+                    requireActivity(),
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val intent = Intent(requireActivity(), MainActivity::class.java)
+//                intent.putExtra("activeTab", R.id.navigation_explore)
+//                intent.putExtra("activeFragment", "article")
+//                startActivity(intent)
             }
         }
     }

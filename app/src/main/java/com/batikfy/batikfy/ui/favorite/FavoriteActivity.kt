@@ -21,6 +21,12 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Toast.makeText(
+            this@FavoriteActivity,
+            resources.getString(R.string.feature_not_ready),
+            Toast.LENGTH_SHORT
+        ).show()
+
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.elevation = 0f
 
@@ -43,17 +49,20 @@ class FavoriteActivity : AppCompatActivity() {
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.isEmpty()) {
-                    Toast.makeText(this@FavoriteActivity, "Query is empty", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    Toast.makeText(this@FavoriteActivity, newText, Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(
+                    this@FavoriteActivity,
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return true
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@FavoriteActivity, query, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@FavoriteActivity,
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
                 return true
             }
         })

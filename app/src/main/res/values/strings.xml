@@ -232,6 +232,7 @@
 
     <string name="read_more">Read More</string>
     <string name="error_occurred">Error occurred</string>
+    <string name="feature_not_ready">This feature is not available yet</string>
     <string name="save_to_fav">Save to favorite list</string>
     <string name="batik_name">Batik Name</string>
     <string name="batik_image">Batik image</string>

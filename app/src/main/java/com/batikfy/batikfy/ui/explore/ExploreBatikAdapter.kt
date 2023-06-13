@@ -3,6 +3,7 @@ package com.batikfy.batikfy.ui.explore
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.remote.response.BatikItem
@@ -35,6 +36,13 @@ class ExploreBatikAdapter(private val listBatik: List<BatikItem>) :
             val intent = Intent(holder.itemView.context, DetailBatikActivity::class.java)
             intent.putExtra(DetailBatikActivity.DETAIL_BATIK, listBatik[position].id)
             holder.itemView.context.startActivity(intent)
+        }
+        holder.binding.ivFav.setOnClickListener{
+            Toast.makeText(
+                holder.itemView.context,
+                holder.itemView.context.resources.getString(R.string.feature_not_ready),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

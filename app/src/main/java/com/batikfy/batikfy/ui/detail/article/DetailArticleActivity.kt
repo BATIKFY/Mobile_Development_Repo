@@ -1,13 +1,11 @@
 package com.batikfy.batikfy.ui.detail.article
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.batikfy.batikfy.MainActivity
 import com.batikfy.batikfy.R
 import com.batikfy.batikfy.data.Result
 import com.batikfy.batikfy.databinding.ActivityDetailArticleBinding
@@ -32,7 +30,7 @@ class DetailArticleActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         val id = intent.getStringExtra(DETAIL_ARTICLE) ?: ""
-        if(id != ""){
+        if (id != "") {
             detailArticleViewModel.getDetailArticle(id).observe(this) { result ->
                 if (result != null) {
                     when (result) {
@@ -51,9 +49,12 @@ class DetailArticleActivity : AppCompatActivity(), View.OnClickListener {
                         }
                         is Result.Error -> {
                             binding.loading.visibility = View.GONE
-                            binding.tvArticleTitle.text = resources.getString(R.string.error_occurred)
-                            binding.tvArticleText.text = resources.getString(R.string.error_occurred)
-                            binding.tvArticleSource.text = resources.getString(R.string.error_occurred)
+                            binding.tvArticleTitle.text =
+                                resources.getString(R.string.error_occurred)
+                            binding.tvArticleText.text =
+                                resources.getString(R.string.error_occurred)
+                            binding.tvArticleSource.text =
+                                resources.getString(R.string.error_occurred)
                             Glide.with(this@DetailArticleActivity)
                                 .load(R.drawable.ic_error)
                                 .into(binding.ivArticle)
@@ -66,7 +67,8 @@ class DetailArticleActivity : AppCompatActivity(), View.OnClickListener {
                         is Result.Loading -> {
                             binding.tvArticleTitle.text = resources.getString(R.string.loading_data)
                             binding.tvArticleText.text = resources.getString(R.string.loading_data)
-                            binding.tvArticleSource.text = resources.getString(R.string.loading_data)
+                            binding.tvArticleSource.text =
+                                resources.getString(R.string.loading_data)
                             Glide.with(this@DetailArticleActivity)
                                 .load(R.drawable.ic_loading)
                                 .into(binding.ivArticle)
@@ -115,10 +117,15 @@ class DetailArticleActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.read_more_btn_article -> {
-                val intent = Intent(this@DetailArticleActivity, MainActivity::class.java)
-                intent.putExtra("activeTab", R.id.navigation_explore)
-                intent.putExtra("activeFragment", "article")
-                startActivity(intent)
+                Toast.makeText(
+                    this@DetailArticleActivity,
+                    resources.getString(R.string.feature_not_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+//                val intent = Intent(this@DetailArticleActivity, MainActivity::class.java)
+//                intent.putExtra("activeTab", R.id.navigation_explore)
+//                intent.putExtra("activeFragment", "article")
+//                startActivity(intent)
             }
         }
     }
