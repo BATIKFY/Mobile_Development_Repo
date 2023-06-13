@@ -34,6 +34,21 @@ interface ApiService {
         @Path("keyword") keyword: String
     ): GetBatikByNameResponse
 
+    @FormUrlEncoded
+    @POST("auth/login")
+    suspend fun login(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): PostLoginResponse
+
+    @FormUrlEncoded
+    @POST("auth/register")
+    suspend fun register(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): PostRegisterResponse
+
     // Still struggling with local storage
     @GET("batik")
     fun getAllBatikWithDB(): Call<GetBatikResponse>

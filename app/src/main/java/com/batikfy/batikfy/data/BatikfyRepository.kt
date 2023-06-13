@@ -26,6 +26,32 @@ class BatikfyRepository private constructor(
 ) {
     private val resultBatik = MediatorLiveData<Result<List<BatikEntity>>>()
 
+    fun login(email: String, password: String): LiveData<Result<PostLoginResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.login(email, password)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("LoginViewModel", "function login: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun register(
+        name: String,
+        email: String,
+        password: String
+    ): LiveData<Result<PostRegisterResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.register(name, email, password)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("LoginViewModel", "function register: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
     fun getAllBatikNoDB(): LiveData<Result<GetBatikResponse>> = liveData {
         emit(Result.Loading)
         try {
